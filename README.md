@@ -40,12 +40,13 @@ python Refraser-awareScheduling.py
 
 ### Output
 [schedule.csv](schedule.csv)        
-* The output data with the X-axis/Y-axis are priority number/number of concurrent process
+* The output data with the X-axis/Y-axis are number of concurrent process/process priority of Deep Learning Application
 * **Plase note that:** 
   * The provided numbers are expected finished time of Deep Learning Process
   * The 's'/'t'/'r' characters marked as Safe Zone/Trade-Off Zone/Reloading Zone 
 
 Example:
+This is the output [schedule.csv](schedule.csv) with the default priority of concurrent process is 0 and the Deep Learning Process priority are bound in range [-10:9].
 ```
  ,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9,
  0,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,
@@ -92,6 +93,32 @@ Example:
   18,s,s,s,s,t,t,t,t,t,r,r,r,r,r,r,r,r,r,r,r,
   19,s,s,s,s,t,t,t,t,t,r,r,r,r,r,r,r,r,r,r,r,
 ```
+
+## Running Mode
+There are 2 running modes:
+* Provide the scheduling table with all the coming process has a same default of priority number. The example is given above.
+* Provide the scheduling table with the coming processes have different process priority numbers.
+
+For example:
+  * We find the safe zone of deep learning process by input the 10 concurrent process with their priority is 1,2,3,-4,-5,-6,-7,-8,0,1 as described in [process_prio_map.dat](process_prio_map.dat)
+  ```
+  10
+  1,2,3,-4,-5,-6,-7,-8,0,1
+  ```
+  * We run the "Refraser-awareScheduling.py" with the option **enable_file_prio_map=1**
+  ```
+  python Refraser-awareScheduling.py
+  ```
+  * The output [schedule.csv](schedule.csv):
+  ```
+   ,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9,
+    0,317,375,446,535,647,786,960,1182,1464,1796,2219,2756,3428,4250,5260,6620,8133,10271,12817,16070,
+    
+    
+   ,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9,
+   0,s,s,s,t,t,t,t,t,r,r,r,r,r,r,r,r,r,r,r,r,
+  ```
+  * It means that the Deep Learning Application can work in the Safe zone with its process priority are -10 and -9. The priority from -8 to -4 is trade-off zone.
 
 ## How to change the parameters
 
