@@ -1,112 +1,88 @@
-###INTRODUCTION:
+# Project Title
 
-+This is a prediction tool to provide the a scheduling table for MICRO2020 paper.
-+This tools will generate a table comprise of the priority and number of concurrent process.
-+The scheduling table will read by the OS and adaptively change the priority of Deep Learning Application.
-+The overall purpose is to guarantee that the Deep Learning Application is not exceeded required time-threshold.
-+The priority number will be referenced as nice number in Linux, with the boudary range of [-20:20]. Lower number will be marked as higher priority. (Ref: https://www.kernel.org/doc/html/latest/scheduler/sched-nice-design.html)
+One Paragraph of project description goes here
 
-================================================================
-REQUIREMENTs:
-================================================================
-+Centos 5.6
-+Python >= 2.7
-+GCC/G++ 5.0
+## Getting Started
 
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-================================================================
-COMPILE:
-================================================================
-./compile.sh
+### Prerequisites
 
+What things you need to install the software and how to install them
 
-================================================================
-RUN:
-================================================================
-python Refraser-awareScheduling.py
+```
+Give examples
+```
 
-================================================================
-OUTPUT:
-================================================================
-schedule.csv        The output data with the X-axis/Y-axis are priority number/number of concurrent process
-                    Please note the number inside is a expected finished time of Deep Learning Process
-                    The 's'/'t'/'r' characters marked as Safe Zone/Trade-Off Zone/Reloading Zone 
+### Installing
 
-Example:
- ,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9,
- 0,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,
- 1,101,104,107,111,115,121,129,139,148,163,179,207,231,267,310,360,425,510,617,749,
- 2,111,117,123,129,139,151,167,187,211,239,271,319,373,439,522,633,759,935,1145,1412,
- 3,115,124,130,142,157,172,199,229,265,307,361,427,505,613,736,904,1094,1362,1676,2084,
- 4,125,133,145,160,181,204,233,275,323,379,451,539,651,787,954,1178,1432,1790,2212,2756,
- 5,135,145,160,180,205,233,270,318,378,448,541,651,791,963,1172,1452,1770,2218,2748,3428,
- 6,145,157,178,199,229,262,307,364,436,520,631,760,928,1137,1385,1726,2106,2642,3281,4097,
- 7,155,169,193,218,253,292,344,410,494,592,721,872,1068,1312,1602,2001,2444,3070,3816,4769,
- 8,165,181,208,237,277,322,381,456,552,664,811,984,1208,1487,1820,2276,2782,3498,4351,5441,
- 9,175,193,223,256,301,351,418,502,610,736,901,1096,1348,1662,2038,2551,3120,3926,4886,6113,
- 10,185,205,235,275,325,380,455,548,668,808,991,1208,1488,1837,2256,2826,3458,4354,5421,6785,
- 11,195,217,250,294,349,409,492,594,726,880,1081,1320,1628,2012,2474,3101,3796,4782,5956,7457,
- 12,205,229,265,313,373,438,529,640,784,952,1171,1432,1768,2187,2692,3376,4134,5210,6491,8129,
- 13,215,241,280,332,397,467,566,686,842,1024,1261,1544,1908,2362,2910,3651,4472,5638,7026,8801,
- 14,225,253,295,351,421,496,603,732,900,1096,1351,1656,2048,2537,3128,3926,4810,6066,7561,9473,
- 15,235,265,310,370,445,525,640,778,958,1168,1441,1768,2188,2712,3346,4201,5148,6494,8096,10145,
- 16,245,280,325,389,469,554,677,824,1016,1240,1531,1880,2328,2887,3564,4476,5487,6922,8631,10817,
- 17,255,292,340,408,493,583,714,870,1074,1312,1621,1992,2468,3062,3782,4751,5826,7350,9166,11489,
- 18,265,304,355,427,517,612,751,916,1132,1384,1711,2104,2608,3237,4000,5026,6165,7778,9701,12161,
- 19,275,316,370,430,541,641,788,962,1190,1456,1801,2216,2748,3412,4218,5301,6504,8206,10236,12833,
+A step by step series of examples that tell you how to get a development env running
 
+Say what the step will be
 
-  ,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9,
-  0,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,
-  1,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,t,t,
-  2,s,s,s,s,s,s,s,s,s,s,s,s,s,s,t,t,t,t,t,r,
-  3,s,s,s,s,s,s,s,s,s,s,s,s,s,t,t,t,t,r,r,r,
-  4,s,s,s,s,s,s,s,s,s,s,s,t,t,t,t,t,r,r,r,r,
-  5,s,s,s,s,s,s,s,s,s,s,t,t,t,t,t,r,r,r,r,r,
-  6,s,s,s,s,s,s,s,s,s,t,t,t,t,t,r,r,r,r,r,r,
-  7,s,s,s,s,s,s,s,s,s,t,t,t,t,r,r,r,r,r,r,r,
-  8,s,s,s,s,s,s,s,s,t,t,t,t,t,r,r,r,r,r,r,r,
-  9,s,s,s,s,s,s,s,s,t,t,t,t,r,r,r,r,r,r,r,r,
-  10,s,s,s,s,s,s,s,t,t,t,t,t,r,r,r,r,r,r,r,r,
-  11,s,s,s,s,s,s,s,t,t,t,t,r,r,r,r,r,r,r,r,r,
-  12,s,s,s,s,s,s,t,t,t,t,t,r,r,r,r,r,r,r,r,r,
-  13,s,s,s,s,s,s,t,t,t,t,t,r,r,r,r,r,r,r,r,r,
-  14,s,s,s,s,s,s,t,t,t,t,r,r,r,r,r,r,r,r,r,r,
-  15,s,s,s,s,s,t,t,t,t,t,r,r,r,r,r,r,r,r,r,r,
-  16,s,s,s,s,s,t,t,t,t,t,r,r,r,r,r,r,r,r,r,r,
-  17,s,s,s,s,s,t,t,t,t,r,r,r,r,r,r,r,r,r,r,r,
-  18,s,s,s,s,t,t,t,t,t,r,r,r,r,r,r,r,r,r,r,r,
-  19,s,s,s,s,t,t,t,t,t,r,r,r,r,r,r,r,r,r,r,r,
+```
+Give the example
+```
 
+And repeat
 
-================================================================
-HOW TO CHANGE THE PARAMETERS:
-================================================================
-vi Refraser-awareScheduling.py
+```
+until finished
+```
 
-================================================================
-USEAGE OF KEY PARAMETERS:
-================================================================
-  num_core=<number 0-7>          Set the CPU configuations:
-                                    +0: UNIPROCESSOR
-                                    +1: DUAL_CPU
-                                    +2: DUAL_CPU_MC
-                                    +3: QUAD_CPU
-                                    +4: QUAD_CPU_MC
-                                    +5: QUAD_CPU_DUAL_SOCKET
-                                    +6: QUAD_CPU_QUAD_SOCKET
-                                    +7: HEX_CPU_DUAL_SOCKET_SMT
+End with an example of getting some data out of the system or using it for a little demo
 
-  running_time=<time in ns>      Set the Deep Learning Application running time.
+## Running the tests
 
-  safe_zone=<time in ns>         Set the upperbound constraint of Safe Zone
+Explain how to run the automated tests for this system
 
-  tradeoff_zone=<time in ns>     Set the upperbound constraint of Trade-Off Zone
+### Break down into end to end tests
 
-  default_concurrent_task_prio=<priority number>         Set default priority number of all concurrent tasks
+Explain what these tests test and why
 
-  enable_file_prio_map=<0/1>     Set/un-Set the priority process from file <process_prio_map.dat>
-                                 <process_prio_map.dat> format is comprised 2 lines:
-                                    +Number of concurrent task
-                                    +Priority number of each task
-            
+```
+Give an example
+```
+
+### And coding style tests
+
+Explain what these tests test and why
+
+```
+Give an example
+```
+
+## Deployment
+
+Add additional notes about how to deploy this on a live system
+
+## Built With
+
+* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
+* [Maven](https://maven.apache.org/) - Dependency Management
+* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+
+## Contributing
+
+Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+
+## Versioning
+
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+
+## Authors
+
+* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+
+See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Acknowledgments
+
+* Hat tip to anyone whose code was used
+* Inspiration
+* etc
+
