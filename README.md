@@ -3,7 +3,7 @@
 Refraser-aware Scheduling tool
 
 ## Introduction
-* This is a prediction tool to generate the a scheduling table for MICRO2020 paper 257.
+* This is a prediction tool to generate the scheduling table for MICRO2020 paper 257.
 * This tools will generate a table consists of: the priority and the number of concurrent processes.
 * The scheduling table will be read by the OS to adaptively change the priority of Deep Learning Application.
 * The overall purpose is to guarantee that Deep Learning Application scheduling does not exceed the safe time-threshold.
