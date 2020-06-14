@@ -1,4 +1,4 @@
-# TITLE
+# For MICRO2020 Rebuttal
 
 Refraser-aware Scheduling tool
 
@@ -98,14 +98,14 @@ Modify "Refraser-awareScheduling.py" file
 
 ### Usage of key parameters 
 * num_core=<number 0-7>          Set the CPU configuations
-                                    - 0: UNIPROCESSOR
-                                    - 1: DUAL_CPU
-                                    - 2: DUAL_CPU_MC
-                                    - 3: QUAD_CPU
-                                    - 4: QUAD_CPU_MC
-                                    - 5: QUAD_CPU_DUAL_SOCKET
-                                    - 6: QUAD_CPU_QUAD_SOCKET
-                                    - 7: HEX_CPU_DUAL_SOCKET_SMT
+  * 0: UNIPROCESSOR
+  * 1: DUAL_CPU
+  * 2: DUAL_CPU_MC
+  * 3: QUAD_CPU
+  * 4: QUAD_CPU_MC
+  * 5: QUAD_CPU_DUAL_SOCKET
+  * 6: QUAD_CPU_QUAD_SOCKET
+  * 7: HEX_CPU_DUAL_SOCKET_SMT
 
 * running_time=<time in ns>      Set the Deep Learning Application running time.
 
@@ -116,9 +116,9 @@ Modify "Refraser-awareScheduling.py" file
 * default_concurrent_task_prio=<priority number>         Set default priority number of all concurrent tasks
 
 * enable_file_prio_map=<0/1>     Set/un-Set the priority process from file [process_prio_map.dat](process_prio_map.dat)
-                                 - [process_prio_map.dat](process_prio_map.dat) format is comprised 2 lines:
-                                    - Number of concurrent task
-                                    - Priority number of each task
+  * [process_prio_map.dat](process_prio_map.dat) format is comprised 2 lines:
+    - Number of concurrent task
+    - Priority number of each task
             
 
 
