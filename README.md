@@ -3,16 +3,16 @@
 Refraser-aware Scheduling tool
 
 ## Introduction
-* This is a prediction tool to provide the a scheduling table for MICRO2020 paper.
-* This tools will generate a table comprise of the priority and number of concurrent process.
-* The scheduling table will read by the OS and adaptively change the priority of Deep Learning Application.
-* The overall purpose is to guarantee that the Deep Learning Application is not exceeded required time-threshold.
-* The priority number will be referenced as nice number in Linux, with the boudary range of [-20:20]. Lower number will be marked as higher priority. ([Ref](https://www.kernel.org/doc/html/latest/scheduler/sched-nice-design.html))
+* This is a prediction tool to generate the a scheduling table for MICRO2020 paper 257.
+* This tools will generate a table consists of: the priority and the number of concurrent processes.
+* The scheduling table will be read by the OS to adaptively change the priority of Deep Learning Application.
+* The overall purpose is to guarantee that Deep Learning Application scheduling does not exceed the safe time-threshold.
+* The priority number will be viewed as nice numbers in Linux, within the range of [-20:20]. Lower number means higher priority. ([Ref](https://www.kernel.org/doc/html/latest/scheduler/sched-nice-design.html))
 
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+The below instructions will get you a copy of the project up and run it on your local machine for development and testing purpose. See deployment for notes on how to deploy the project on a live system.
 
 ### Prerequisites
 
@@ -42,11 +42,11 @@ python Refraser-awareScheduling.py
 [schedule.csv](schedule.csv)        
 * The output data with the X-axis/Y-axis are number of concurrent process/process priority of Deep Learning Application
 * **Plase note that:** 
-  * The provided numbers are expected finished time of Deep Learning Process
-  * The 's'/'t'/'r' characters marked as Safe Zone/Trade-Off Zone/Reloading Zone 
+  * The provided numbers are the expected finished time of Deep Learning Process
+  * The 's'/'t'/'r' characters represent the Safe Zone/Trade-Off Zone/Reloading Zone 
 
 Example:
-This is the output [schedule.csv](schedule.csv) with the default priority of concurrent process is 0 and the Deep Learning Process priority are bound in range [-10:9].
+This is the output [schedule.csv](schedule.csv) with the default priority of concurrent process is 0 and the Deep Learning Processes' priorities are bounded in range [-10:9].
 ```
  ,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9,
  0,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,
@@ -96,11 +96,11 @@ This is the output [schedule.csv](schedule.csv) with the default priority of con
 
 ## Running Mode
 There are 2 running modes:
-* Provide the scheduling table with all the coming process has a same default of priority number. The example is given above.
-* Provide the scheduling table with the coming processes have different process priority numbers.
+* Generate the scheduling table with all the coming processes having the same default priority number. The example is given above.
+* Generate the scheduling table with the coming processes having different process priority numbers.
 
 Example for the second mode:
-  * We find the safe zone of deep learning process by input the 10 concurrent process with their priority is 1,2,3,-4,-5,-6,-7,-8,0,1 as described in [process_prio_map.dat](process_prio_map.dat)
+  * We find the safe zone of deep learning processes by input the 10 concurrent processes with their priorities are 1,2,3,-4,-5,-6,-7,-8,0,1 as described in [process_prio_map.dat](process_prio_map.dat)
   ```
   10
   1,2,3,-4,-5,-6,-7,-8,0,1
@@ -118,11 +118,11 @@ Example for the second mode:
    ,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9,
    0,s,s,s,t,t,t,t,t,r,r,r,r,r,r,r,r,r,r,r,r,
   ```
-  * It means that the Deep Learning Application can work in the Safe zone with its process priority are -10 and -9. The priority from -8 to -4 is trade-off zone.
+  * It means that the Deep Learning Application can work in the Safe zone with its process priorities are -10 and -9. The priority from -8 to -4 is the trade-off zone.
 
 ## How to change the parameters
 
-Modify "Refraser-awareScheduling.py" file
+Modify the "Refraser-awareScheduling.py" file as below
 
 ### Usage of key parameters 
 * *num_core= < number 0-7 >* :          **Set the CPU configuations:**
@@ -143,8 +143,8 @@ Modify "Refraser-awareScheduling.py" file
 
 * *default_concurrent_task_prio= < priority number >* :        **Set default priority number of all concurrent tasks if enable_file_prio_map is un-set**
 
-* *enable_file_prio_map= < 0/1 >* :    **Set/un-Set the priority process from file [process_prio_map.dat](process_prio_map.dat)**
-  * [process_prio_map.dat](process_prio_map.dat) format is comprised 2 lines:
+* *enable_file_prio_map= < 0/1 >* :    **Set/un-Set the process's priority from file [process_prio_map.dat](process_prio_map.dat)**
+  * [process_prio_map.dat](process_prio_map.dat) format comprises 2 lines:
     - Number of concurrent task
     - Priority number of each task
             
