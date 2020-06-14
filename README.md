@@ -41,8 +41,9 @@ python Refraser-awareScheduling.py
 ### Output
 [schedule.csv](schedule.csv)        
 * The output data with the X-axis/Y-axis are priority number/number of concurrent process
-* Please note the number inside is a expected finished time of Deep Learning Process
-* The 's'/'t'/'r' characters marked as Safe Zone/Trade-Off Zone/Reloading Zone 
+* **Plase note that:** 
+  * The provided numbers are expected finished time of Deep Learning Process
+  * The 's'/'t'/'r' characters marked as Safe Zone/Trade-Off Zone/Reloading Zone 
 
 Example:
 ```
