@@ -1,32 +1,34 @@
 ===============================================================
 INTRODUCTION:
-This is a prediction tool to provide the a scheduling table for MICRO2020 paper.
-This tools will generate a table comprise of the priority and number of concurrent process.
-The scheduling table will read by the OS and adaptively change the priority of Deep Learning Application.
-The overall purpose is to guarantee that the Deep Learning Application is not exceeded required time-threshold.
-
-The priority number will be referenced as nice number in Linux, with the boudary range of [-20:20]. Lower number will be marked as higher priority.
+===============================================================
++This is a prediction tool to provide the a scheduling table for MICRO2020 paper.
++This tools will generate a table comprise of the priority and number of concurrent process.
++The scheduling table will read by the OS and adaptively change the priority of Deep Learning Application.
++The overall purpose is to guarantee that the Deep Learning Application is not exceeded required time-threshold.
++The priority number will be referenced as nice number in Linux, with the boudary range of [-20:20]. Lower number will be marked as higher priority. (Ref: https://www.kernel.org/doc/html/latest/scheduler/sched-nice-design.html)
 
 ================================================================
 REQUIREMENTs:
+================================================================
 +Centos 5.6
-
 +Python >= 2.7
-
 +GCC/G++ 5.0
 
 
 ================================================================
 COMPILE:
+================================================================
 ./compile.sh
 
 
 ================================================================
 RUN:
+================================================================
 python Refraser-awareScheduling.py
 
 ================================================================
 OUTPUT:
+================================================================
 schedule.csv        The output data with the X-axis/Y-axis are priority number/number of concurrent process
                     Please note the number inside is a expected finished time of Deep Learning Process
                     The 's'/'t'/'r' characters marked as Safe Zone/Trade-Off Zone/Reloading Zone 
@@ -80,10 +82,12 @@ Example:
 
 ================================================================
 HOW TO CHANGE THE PARAMETERS:
+================================================================
 vi Refraser-awareScheduling.py
 
 ================================================================
 USEAGE OF KEY PARAMETERS:
+================================================================
   num_core=<number 0-7>          Set the CPU configuations:
                                     +0: UNIPROCESSOR
                                     +1: DUAL_CPU
