@@ -1,6 +1,5 @@
-===============================================================
-INTRODUCTION:
-===============================================================
+###INTRODUCTION:
+
 +This is a prediction tool to provide the a scheduling table for MICRO2020 paper.
 +This tools will generate a table comprise of the priority and number of concurrent process.
 +The scheduling table will read by the OS and adaptively change the priority of Deep Learning Application.
