@@ -114,7 +114,7 @@ Modify "Refraser-awareScheduling.py" file
 
 * *tradeoff_zone= < time in ns >* :     **Set the upperbound constraint of Trade-Off Zone**
 
-* *default_concurrent_task_prio= < priority number >* :        **Set default priority number of all concurrent tasks**
+* *default_concurrent_task_prio= < priority number >* :        **Set default priority number of all concurrent tasks if enable_file_prio_map is un-set**
 
 * *enable_file_prio_map= < 0/1 >* :    **Set/un-Set the priority process from file [process_prio_map.dat](process_prio_map.dat)**
   * [process_prio_map.dat](process_prio_map.dat) format is comprised 2 lines:
