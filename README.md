@@ -135,18 +135,18 @@ Modify the "Refraser-awareScheduling.py" file as below
   * 6: QUAD_CPU_QUAD_SOCKET
   * 7: HEX_CPU_DUAL_SOCKET_SMT
 
-* *running_time= < time in ns >* :      **Set the Deep Learning Application running time.**
+* *running_time= < time in ms >* :      **Set the Deep Learning Application running time.**
 
-* *safe_zone= < time in ns >* :        **Set the upperbound constraint of Safe Zone**
+* *safe_zone= < time in ms >* :        **Set the upperbound constraint of Safe Zone**
 
-* *tradeoff_zone= < time in ns >* :     **Set the upperbound constraint of Trade-Off Zone**
+* *tradeoff_zone= < time in ms >* :     **Set the upperbound constraint of Trade-Off Zone**
 
 * *default_concurrent_task_prio= < priority number >* :        **Set default priority number of all concurrent tasks if enable_file_prio_map is un-set**
 
 * *enable_file_prio_map= < 0/1 >* :    **Set/un-Set the process's priority from file [process_prio_map.dat](process_prio_map.dat)**
   * [process_prio_map.dat](process_prio_map.dat) format comprises 2 lines:
-    - Number of concurrent task
-    - Priority number of each task
+    - Number of concurrent process
+    - Priority number of each concurrent process
             
 
 

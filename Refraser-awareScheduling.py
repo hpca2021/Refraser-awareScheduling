@@ -44,8 +44,8 @@ if enable_file_prio_map:
   for prio in range(min_prio,max_prio):
     run_cmd = "./linsched-linsched-alpha/tools/linsched/tests/linsched "+" "+str(num_core)+" "+str(prio)+" "+str(running_time)+" "+str(io_time)+" "+str("0")+" "+str(default_cocurrent_task_prio)+" 1";
     ########################
-    # Call the C-function, which the return
-    # the expected finish time of Deep Learning Process
+    # Call the C-function, which returns
+    # the expected finished time of Deep Learning Process
     ########################
     ret = int(subprocess.Popen(run_cmd, shell=True, stdout=subprocess.PIPE).stdout.read());
     #print run_cmd+" Priority "+str(prio)+" Num of Process "+str(proc)+" Total exectuting time "+str(ret);
@@ -68,8 +68,8 @@ else:
     for prio in range(min_prio,max_prio):
       run_cmd = "./linsched-linsched-alpha/tools/linsched/tests/linsched "+" "+str(num_core)+" "+str(prio)+" "+str(running_time)+" "+str(io_time)+" "+str(proc)+" "+str(default_cocurrent_task_prio)+" 0";
     ########################
-    # Call the C-function, which the return
-    # the expected finish time of Deep Learning Process
+    # Call the C-function, which returns
+    # the expected finished time of Deep Learning Process
     ########################
       ret = int(subprocess.Popen(run_cmd, shell=True, stdout=subprocess.PIPE).stdout.read());
       #print run_cmd+" Priority "+str(prio)+" Num of Process "+str(proc)+" Total exectuting time "+str(ret);
