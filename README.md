@@ -1,9 +1,9 @@
-# For MICRO2020 Rebuttal
+# For HPCA2021 Rebuttal
 
 Refraser-aware Scheduling tool
 
 ## Introduction
-* This is a prediction tool to generate the scheduling table for MICRO2020 paper 275.
+* This is a prediction tool to generate the scheduling table for HPCA2021 paper 406.
 * This tools will generate a table consists of: the priority and the number of concurrent processes.
 * The scheduling table will be read by the OS to adaptively change the priority of Deep Learning Application.
 * The overall purpose is to guarantee that Deep Learning Application scheduling does not exceed the safe time-threshold.
