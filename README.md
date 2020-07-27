@@ -7,7 +7,7 @@ Refraser-aware Scheduling tool
 * This tools will generate a table consists of: the priority and the number of concurrent processes.
 * The scheduling table will be read by the OS to adaptively change the priority of Deep Learning Application.
 * The overall purpose is to guarantee that Deep Learning Application scheduling does not exceed the safe time-threshold.
-* The priority number will be viewed as nice numbers in Linux, within the range of [-20:20]. Lower number means higher priority. ([Ref](https://www.kernel.org/doc/html/latest/scheduler/sched-nice-design.html))
+* The priority number will be viewed as nice numbers in Linux, within the range of [-20:19]. Lower number means higher priority. ([Ref](https://www.kernel.org/doc/html/latest/scheduler/sched-nice-design.html))
 
 
 ## Getting Started
