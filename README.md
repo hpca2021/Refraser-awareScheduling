@@ -1,12 +1,12 @@
-# For HPCA2021 Review
+# For USENIX ATC 2021 Review
 
-Refraser-aware Scheduling tool
+SoftRefresh Scheduling tool
 
 ## Introduction
-* This is a prediction tool to generate the scheduling table for HPCA2021 paper 406.
+* This is a prediction tool to generate the scheduling table for USENIX ATC 2021 paper 13.
 * This tools will generate a table consists of: the priority and the number of concurrent processes.
 * The scheduling table will be read by the OS to adaptively change the priority of Deep Learning Application.
-* The overall purpose is to guarantee that Deep Learning Application scheduling does not exceed the safe time-threshold.
+* The overall purpose is to guarantee that Application scheduling does not exceed the marginal safe time-threshold.
 * The priority number will be viewed as nice numbers in Linux, within the range of [-20:19]. Lower number means higher priority. ([Ref](https://www.kernel.org/doc/html/latest/scheduler/sched-nice-design.html))
 
 
@@ -32,10 +32,10 @@ Type in the bash command line:
 
 ### Running the tests
 
-Run [Refraser-awareScheduling.py](Refraser-awareScheduling.py) script
+Run [SoftRefreshScheduling.py](SoftRefreshScheduling.py) script
 
 ```
-python Refraser-awareScheduling.py
+python SoftRefreshScheduling.py
 ```
 
 ### Output
@@ -71,27 +71,28 @@ This is the output [schedule.csv](schedule.csv) with the default priority of con
  19,275,316,370,430,541,641,788,962,1190,1456,1801,2216,2748,3412,4218,5301,6504,8206,10236,12833,
 
 
-  ,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9,
-  0,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,
-  1,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,t,t,
-  2,s,s,s,s,s,s,s,s,s,s,s,s,s,s,t,t,t,t,t,r,
-  3,s,s,s,s,s,s,s,s,s,s,s,s,s,t,t,t,t,r,r,r,
-  4,s,s,s,s,s,s,s,s,s,s,s,t,t,t,t,t,r,r,r,r,
-  5,s,s,s,s,s,s,s,s,s,s,t,t,t,t,t,r,r,r,r,r,
-  6,s,s,s,s,s,s,s,s,s,t,t,t,t,t,r,r,r,r,r,r,
-  7,s,s,s,s,s,s,s,s,s,t,t,t,t,r,r,r,r,r,r,r,
-  8,s,s,s,s,s,s,s,s,t,t,t,t,t,r,r,r,r,r,r,r,
-  9,s,s,s,s,s,s,s,s,t,t,t,t,r,r,r,r,r,r,r,r,
-  10,s,s,s,s,s,s,s,t,t,t,t,t,r,r,r,r,r,r,r,r,
-  11,s,s,s,s,s,s,s,t,t,t,t,r,r,r,r,r,r,r,r,r,
-  12,s,s,s,s,s,s,t,t,t,t,t,r,r,r,r,r,r,r,r,r,
-  13,s,s,s,s,s,s,t,t,t,t,t,r,r,r,r,r,r,r,r,r,
-  14,s,s,s,s,s,s,t,t,t,t,r,r,r,r,r,r,r,r,r,r,
-  15,s,s,s,s,s,t,t,t,t,t,r,r,r,r,r,r,r,r,r,r,
-  16,s,s,s,s,s,t,t,t,t,t,r,r,r,r,r,r,r,r,r,r,
-  17,s,s,s,s,s,t,t,t,t,r,r,r,r,r,r,r,r,r,r,r,
-  18,s,s,s,s,t,t,t,t,t,r,r,r,r,r,r,r,r,r,r,r,
-  19,s,s,s,s,t,t,t,t,t,r,r,r,r,r,r,r,r,r,r,r,
+ ,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9,
+ 0,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,
+ 1,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,
+ 2,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,r,r,
+ 3,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,r,r,r,r,
+ 4,s,s,s,s,s,s,s,s,s,s,s,s,s,s,s,r,r,r,r,r,
+ 5,s,s,s,s,s,s,s,s,s,s,s,s,s,s,r,r,r,r,r,r,
+ 6,s,s,s,s,s,s,s,s,s,s,s,s,s,r,r,r,r,r,r,r,
+ 7,s,s,s,s,s,s,s,s,s,s,s,s,r,r,r,r,r,r,r,r,
+ 8,s,s,s,s,s,s,s,s,s,s,s,s,r,r,r,r,r,r,r,r,
+ 9,s,s,s,s,s,s,s,s,s,s,s,r,r,r,r,r,r,r,r,r,
+ 10,s,s,s,s,s,s,s,s,s,s,s,r,r,r,r,r,r,r,r,r,
+ 11,s,s,s,s,s,s,s,s,s,s,r,r,r,r,r,r,r,r,r,r,
+ 12,s,s,s,s,s,s,s,s,s,s,r,r,r,r,r,r,r,r,r,r,
+ 13,s,s,s,s,s,s,s,s,s,r,r,r,r,r,r,r,r,r,r,r,
+ 14,s,s,s,s,s,s,s,s,s,r,r,r,r,r,r,r,r,r,r,r,
+ 15,s,s,s,s,s,s,s,s,s,r,r,r,r,r,r,r,r,r,r,r,
+ 16,s,s,s,s,s,s,s,s,r,r,r,r,r,r,r,r,r,r,r,r,
+ 17,s,s,s,s,s,s,s,s,r,r,r,r,r,r,r,r,r,r,r,r,
+ 18,s,s,s,s,s,s,s,s,r,r,r,r,r,r,r,r,r,r,r,r,
+ 19,s,s,s,s,s,s,s,s,r,r,r,r,r,r,r,r,r,r,r,r,
+
 ```
 
 ## Running Mode
@@ -116,7 +117,7 @@ Example for the second mode:
     
     
    ,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9,
-   0,s,s,s,t,t,t,t,t,r,r,r,r,r,r,r,r,r,r,r,r,
+   0,s,s,s,s,s,s,s,r,r,r,r,r,r,r,r,r,r,r,r,r,
   ```
   * It means that the Deep Learning Application can work in the Safe zone with its process priorities are -10 and -9. The priority from -8 to -4 is the trade-off zone.
 
