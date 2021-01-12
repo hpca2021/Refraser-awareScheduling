@@ -5,7 +5,7 @@ SoftRefresh Scheduling tool
 ## Introduction
 * This is a prediction tool to generate the scheduling table for USENIX ATC 2021 paper 13.
 * This tools will generate a table consists of: the priority and the number of concurrent processes.
-* The scheduling table will be read by the OS to adaptively change the priority of Deep Learning Application.
+* The scheduling table will be read by the OS to adaptively change the priority of Application.
 * The overall purpose is to guarantee that Application scheduling does not exceed the marginal safe time-threshold.
 * The priority number will be viewed as nice numbers in Linux, within the range of [-20:19]. Lower number means higher priority. ([Ref](https://www.kernel.org/doc/html/latest/scheduler/sched-nice-design.html))
 
@@ -40,13 +40,13 @@ python SoftRefreshScheduling.py
 
 ### Output
 [schedule.csv](schedule.csv)        
-* The output data with the X-axis/Y-axis are number of concurrent process/process priority of Deep Learning Application
+* The output data with the X-axis/Y-axis are number of concurrent process/process priority of Application
 * **Plase note that:** 
-  * The provided numbers are the expected finished time of Deep Learning Process
-  * The 's'/'t'/'r' characters represent the Safe Zone/Trade-Off Zone/Reloading Zone 
+  * The provided numbers are the expected finished time of Process
+  * The 's'/'r' characters represent the Safe Zone/Reloading Zone due to error accumulated 
 
 Example:
-This is the output [schedule.csv](schedule.csv) with the default priority of concurrent process is 0 and the Deep Learning Processes' priorities are bounded in range [-10:9].
+This is the output [schedule.csv](schedule.csv) with the default priority of concurrent process is 0 and the Processes' priorities are bounded in range [-10:9].
 ```
  ,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9,
  0,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,
@@ -119,7 +119,7 @@ Example for the second mode:
    ,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9,
    0,s,s,s,s,s,s,s,r,r,r,r,r,r,r,r,r,r,r,r,r,
   ```
-  * It means that the Deep Learning Application can work in the Safe zone with its process priorities are -10 and -9. The priority from -8 to -4 is the trade-off zone.
+  * It means that the Application can work in the Safe zone with its process priorities are -10 and -9. The priority from -8 to -4 is the trade-off zone.
 
 ## How to change the parameters
 
@@ -136,11 +136,9 @@ Modify the "Refraser-awareScheduling.py" file as below
   * 6: QUAD_CPU_QUAD_SOCKET
   * 7: HEX_CPU_DUAL_SOCKET_SMT
 
-* *running_time= < time in ms >* :      **Set the Deep Learning Application running time.**
+* *running_time= < time in ms >* :      **Set the Application running time.**
 
 * *safe_zone= < time in ms >* :        **Set the upperbound constraint of Safe Zone**
-
-* *tradeoff_zone= < time in ms >* :     **Set the upperbound constraint of Trade-Off Zone**
 
 * *default_concurrent_task_prio= < priority number >* :        **Set default priority number of all concurrent tasks if enable_file_prio_map is un-set**
 
