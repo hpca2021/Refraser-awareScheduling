@@ -101,14 +101,14 @@ There are 2 running modes:
 * Generate the scheduling table with the coming processes having different process priority numbers.
 
 Example for the second mode:
-  * We find the safe zone of deep learning processes by input the 10 concurrent processes with their priorities are 1,2,3,-4,-5,-6,-7,-8,0,1 as described in [process_prio_map.dat](process_prio_map.dat)
+  * We find the safe zone of processes by input the 10 concurrent processes with their priorities are 1,2,3,-4,-5,-6,-7,-8,0,1 as described in [process_prio_map.dat](process_prio_map.dat)
   ```
   10
   1,2,3,-4,-5,-6,-7,-8,0,1
   ```
-  * We run the "Refraser-awareScheduling.py" with the option **enable_file_prio_map=1**
+  * We run the "SoftRefreshScheduling.py" with the option **enable_file_prio_map=1**
   ```
-  python Refraser-awareScheduling.py
+  python SoftRefreshScheduling.py
   ```
   * The output [schedule.csv](schedule.csv):
   ```
@@ -123,7 +123,7 @@ Example for the second mode:
 
 ## How to change the parameters
 
-Modify the "Refraser-awareScheduling.py" file as below
+Modify the "SoftRefreshScheduling.py" file as below
 
 ### Usage of key parameters 
 * *num_core= < number 0-7 >* :          **Set the CPU configuations:**
